@@ -1,0 +1,28 @@
+{
+  "name": "construction_industry_procurement_system_backend",
+  "version": "1.0.0",
+  "description": "Procurement System for Construction Industry -> Backend - Final Project CSSE 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IT20127046/Construction_Industry_Procurement_System_Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IT20127046/Construction_Industry_Procurement_System_Backend/issues"
+  },
+  "homepage": "https://github.com/IT20127046/Construction_Industry_Procurement_System_Backend#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20"
+  }
+}
