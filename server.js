@@ -15,6 +15,11 @@ app.use(cors());
 const sampleRoutes = require('./routes/sampleRoutes');
 app.use(sampleRoutes);
 
+const supplierRoutes = require('./routes/supplierRoutes');
+app.use(supplierRoutes);
+
+
+
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
 
