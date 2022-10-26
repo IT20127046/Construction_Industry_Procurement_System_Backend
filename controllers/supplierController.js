@@ -18,6 +18,7 @@ const supplierRegistration = (req, res) => {
     email: req.body.email,
     mobile: req.body.mobile,
     address: req.body.address,
+    type: req.body.type,
     password: req.body.password,
     dateRegistered: current,
   };
@@ -87,6 +88,7 @@ const supplierLogin = function (req, res) {
               email: user.email,
               mobile: user.mobile,
               address: user.address,
+              type: user.type,
               dateRegistered: user.dateRegistered,
             };
             const userToken = jwt.sign(payload, process.env.SECRET_KEY, {
