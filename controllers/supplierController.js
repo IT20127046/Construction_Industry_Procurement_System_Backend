@@ -7,6 +7,7 @@ const { type } = require("express/lib/response");
 const { v4: uuidv4 } = require("uuid");
 
 
+
 process.env.SECRET_KEY = "secret2022";
 
 //supplier registration with password encryption 
@@ -120,9 +121,41 @@ const supplierLogin = function (req, res) {
       });
   };
 
+  // GetAll Supplier Details
+const getAll_supplier_details = function (req, res){
+  Suppliers.find().exec((err, exsitingSupplierDetails) => {
+      if (err) {
+        return res.status(400).json({
+          error: err,
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        exsitingSupplierDetails,
+      });
+    });
+}
+
+//get Supplier Details by Name
+const getSupplierDetailsByName = function (req, res) {
+  let name = req.params.name;
+
+  Suppliers.find({ name: name }, (err, details) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+    return res.status(200).json({
+      success: true,
+      exsitingSupplierDetails: details,
+    });
+  });
+};
+
 
 module.exports = {
     supplierRegistration,
-    supplierLogin
+    supplierLogin,
+    getAll_supplier_details,
+    getSupplierDetailsByName
     
   };
