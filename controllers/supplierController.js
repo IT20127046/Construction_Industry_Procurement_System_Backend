@@ -152,10 +152,31 @@ const getSupplierDetailsByName = function (req, res) {
 };
 
 
+// Update Supplier Details
+const update_supplier_details = function (req, res){
+  Suppliers.findByIdAndUpdate(
+      req.params.id,
+      {
+          $set:req.body
+      },
+      (err)=>{
+          if(err){
+              return res.status(400).json({error:err});
+          }
+          return res.status(200).json({
+              success:true
+          });
+      }
+  );
+}
+
+
+
 module.exports = {
     supplierRegistration,
     supplierLogin,
     getAll_supplier_details,
-    getSupplierDetailsByName
+    getSupplierDetailsByName,
+    update_supplier_details
     
   };
