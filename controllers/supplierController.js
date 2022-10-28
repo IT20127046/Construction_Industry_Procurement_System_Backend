@@ -7,6 +7,7 @@ const { type } = require("express/lib/response");
 const { v4: uuidv4 } = require("uuid");
 
 
+
 process.env.SECRET_KEY = "secret2022";
 
 //supplier registration with password encryption 
@@ -18,6 +19,10 @@ const supplierRegistration = (req, res) => {
     email: req.body.email,
     mobile: req.body.mobile,
     address: req.body.address,
+    image:req.body.image,
+    location:req.body.location,
+    supplierItems:req.body.supplierItems,
+    type: req.body.type,
     password: req.body.password,
     dateRegistered: current,
   };
@@ -87,6 +92,10 @@ const supplierLogin = function (req, res) {
               email: user.email,
               mobile: user.mobile,
               address: user.address,
+              image:req.body.image,
+              location:req.body.location,
+              supplierItem:req.body.supplierItems,
+              type: user.type,
               dateRegistered: user.dateRegistered,
             };
             const userToken = jwt.sign(payload, process.env.SECRET_KEY, {
@@ -118,9 +127,62 @@ const supplierLogin = function (req, res) {
       });
   };
 
+  // GetAll Supplier Details
+const getAll_supplier_details = function (req, res){
+  Suppliers.find().exec((err, exsitingSupplierDetails) => {
+      if (err) {
+        return res.status(400).json({
+          error: err,
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        exsitingSupplierDetails,
+      });
+    });
+}
+
+//get Supplier Details by Name
+const getSupplierDetailsByName = function (req, res) {
+  let name = req.params.name;
+
+  Suppliers.find({ name: name }, (err, details) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+    return res.status(200).json({
+      success: true,
+      exsitingSupplierDetails: details,
+    });
+  });
+};
+
+
+// Update Supplier Details
+const update_supplier_details = function (req, res){
+  Suppliers.findByIdAndUpdate(
+      req.params.id,
+      {
+          $set:req.body
+      },
+      (err)=>{
+          if(err){
+              return res.status(400).json({error:err});
+          }
+          return res.status(200).json({
+              success:true
+          });
+      }
+  );
+}
+
+
 
 module.exports = {
     supplierRegistration,
-    supplierLogin
+    supplierLogin,
+    getAll_supplier_details,
+    getSupplierDetailsByName,
+    update_supplier_details
     
   };

@@ -8,6 +8,14 @@ SupplierRouter.post("/supplier/registration", SupplierController.supplierRegistr
 // supplierLogin
 SupplierRouter.post("/supplier/login", SupplierController.supplierLogin);
 
+// GetAll Supplier Details
+SupplierRouter.get('/supplier/details/getAll', SupplierController.getAll_supplier_details);
+
+//get Supplier Details by Name
+SupplierRouter.get( "/supplier/details/:name", SupplierController.getSupplierDetailsByName);
+
+// Update Supplier Details
+SupplierRouter.put('/update/supplier/details/:id', SupplierController.update_supplier_details);
 
 
-module.exports = SupplierRouter;
+module.exports = SupplierRouter;SupplierRouter
