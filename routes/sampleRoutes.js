@@ -5,7 +5,7 @@ const SampleController = require('../controllers/sampleController');
 // Save Sample
 SampleRouter.post('/sample/add', SampleController.save_sample);
 
-// GetAll Sample
+// GetAll Samples
 SampleRouter.get('/sample/getAll', SampleController.getAll_samples);
 
 // Get Sample By ID
