@@ -21,13 +21,17 @@ const supplierSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
+  image: { 
+    type: String, 
+    required: true 
+  },
   location: {
     type: String,
-    required: false,
+    required: true,
   },
   supplierItems: {
     type: String,
-    required: false,
+    required: true,
   },
   type: { 
     type: String, 
