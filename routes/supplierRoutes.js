@@ -14,5 +14,10 @@ SupplierRouter.get('/supplier/details/getAll', SupplierController.getAll_supplie
 //get Supplier Details by Name
 SupplierRouter.get( "/supplier/details/:name", SupplierController.getSupplierDetailsByName);
 
+//get Supplier Details by ID
+SupplierRouter.get( "/supplier/:id", SupplierController.getSupplierByID);
+
+
+
 
 module.exports = SupplierRouter;SupplierRouter
