@@ -157,6 +157,22 @@ const getSupplierDetailsByName = function (req, res) {
   });
 };
 
+// Get Supplier Details using Id
+const get_Supplier_id = function (req, res){
+  let supplierID = req.params.id;
+
+  Suppliers.findById(supplierID,(err,exsitingSupplierDetails)=>{
+      if(err){
+          return res.status(400).json({success:false, err});
+      }
+      return res.status(200).json({
+          success:true,
+          exsitingSupplierDetails
+      });
+  });
+}
+
+
 
 // Update Supplier Details
 const update_supplier_details = function (req, res){
@@ -182,6 +198,7 @@ module.exports = {
     supplierRegistration,
     supplierLogin,
     getAll_supplier_details,
+    get_Supplier_id,
     getSupplierDetailsByName,
     update_supplier_details
     

@@ -18,6 +18,9 @@ app.use(sampleRoutes);
 const supplierRoutes = require('./routes/supplierRoutes');
 app.use(supplierRoutes);
 
+const supplierItemsRoutes = require('./routes/SupplierItemsRoute');
+app.use(supplierItemsRoutes);
+
 const tenderRoutes = require('./routes/tenderRoutes');
 app.use(tenderRoutes);
 
