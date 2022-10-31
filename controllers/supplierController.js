@@ -19,6 +19,9 @@ const supplierRegistration = (req, res) => {
     email: req.body.email,
     mobile: req.body.mobile,
     address: req.body.address,
+    image:req.body.image,
+    location:req.body.location,
+    supplierItems:req.body.supplierItems,
     type: req.body.type,
     password: req.body.password,
     dateRegistered: current,
@@ -89,6 +92,9 @@ const supplierLogin = function (req, res) {
               email: user.email,
               mobile: user.mobile,
               address: user.address,
+              image:req.body.image,
+              location:req.body.location,
+              supplierItem:req.body.supplierItems,
               type: user.type,
               dateRegistered: user.dateRegistered,
             };
@@ -151,11 +157,49 @@ const getSupplierDetailsByName = function (req, res) {
   });
 };
 
+// Get Supplier Details using Id
+const get_Supplier_id = function (req, res){
+  let supplierID = req.params.id;
+
+  Suppliers.findById(supplierID,(err,exsitingSupplierDetails)=>{
+      if(err){
+          return res.status(400).json({success:false, err});
+      }
+      return res.status(200).json({
+          success:true,
+          exsitingSupplierDetails
+      });
+  });
+}
+
+
+
+// Update Supplier Details
+const update_supplier_details = function (req, res){
+  Suppliers.findByIdAndUpdate(
+      req.params.id,
+      {
+          $set:req.body
+      },
+      (err)=>{
+          if(err){
+              return res.status(400).json({error:err});
+          }
+          return res.status(200).json({
+              success:true
+          });
+      }
+  );
+}
+
+
 
 module.exports = {
     supplierRegistration,
     supplierLogin,
     getAll_supplier_details,
-    getSupplierDetailsByName
+    get_Supplier_id,
+    getSupplierDetailsByName,
+    update_supplier_details
     
   };
