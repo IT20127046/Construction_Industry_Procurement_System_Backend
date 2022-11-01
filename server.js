@@ -25,6 +25,9 @@ app.use(supplierItemsRoutes);
 const tenderRoutes = require("./routes/tenderRoutes");
 app.use(tenderRoutes);
 
+const itemDetailsRoutes = require("./routes/itemDetailsRouter");
+app.use(itemDetailsRoutes);
+
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;
 

@@ -18,7 +18,7 @@ const save_tender = function (req, res){
 
 // Get all tender
 const getall_tenders = function (req, res){
-    TenderModel.find().exec((err, exsitingTenders) => {
+    TenderModel.find().exec((err, existingTenders) => {
         if (err) {
           return res.status(400).json({
             error: err,
@@ -26,7 +26,7 @@ const getall_tenders = function (req, res){
         }
         return res.status(200).json({
           success: true,
-          exsitingTenders,
+          existingTenders,
         });
       });
 }
@@ -35,13 +35,13 @@ const getall_tenders = function (req, res){
 const get_tender = function (req, res){
     let tenderID = req.params.id;
 
-    TenderModel.findById(tenderID,(err,exsitingTender)=>{
+    TenderModel.findById(tenderID,(err,existingTender)=>{
         if(err){
             return res.status(400).json({success:false, err});
         }
         return res.status(200).json({
             success:true,
-            exsitingTender
+            existingTender
         });
     });
 }
