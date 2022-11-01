@@ -5,25 +5,25 @@ const supplierSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  name: { 
+  name: {
     type: String,
-    required: true
-   },
-  email: { 
-    type: String, 
-    required: true 
+    required: true,
   },
-  mobile: { 
-    type: String, 
-    required: true 
+  email: {
+    type: String,
+    required: true,
   },
-  address: { 
-    type: String, 
-    required: true 
+  mobile: {
+    type: String,
+    required: true,
   },
-  image: { 
-    type: String, 
-    required: true 
+  address: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
   },
   location: {
     type: String,
@@ -33,9 +33,9 @@ const supplierSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: { 
-    type: String, 
-    required: true 
+  type: {
+    type: String,
+    required: true,
   },
   password: {
     type: String,

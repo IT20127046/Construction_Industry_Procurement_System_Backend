@@ -21,4 +21,5 @@ SupplierRouter.get( "/supplier/details/:name", SupplierController.getSupplierDet
 SupplierRouter.put('/update/supplier/details/:id', SupplierController.update_supplier_details);
 
 
+
 module.exports = SupplierRouter;SupplierRouter
