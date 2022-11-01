@@ -12,16 +12,17 @@ app.use(bodyparser.json());
 app.use(cors());
 
 // Routes
-const sampleRoutes = require('./routes/sampleRoutes');
-app.use(sampleRoutes);
 
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require("./routes/userRoutes");
 app.use(userRoutes);
 
-const supplierRoutes = require('./routes/supplierRoutes');
+const supplierRoutes = require("./routes/supplierRoutes");
 app.use(supplierRoutes);
 
-const tenderRoutes = require('./routes/tenderRoutes');
+const supplierItemsRoutes = require("./routes/SupplierItemsRoute");
+app.use(supplierItemsRoutes);
+
+const tenderRoutes = require("./routes/tenderRoutes");
 app.use(tenderRoutes);
 
 const port = process.env.PORT || 5000;
