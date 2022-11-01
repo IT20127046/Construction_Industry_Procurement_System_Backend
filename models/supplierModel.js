@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+
+//Create database schema 
 const supplierSchema = new mongoose.Schema({
   uid: {
     type: String,
