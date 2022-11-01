@@ -141,7 +141,7 @@ const getAll_supplier_details = function (req, res) {
 const getSupplierDetailsByName = function (req, res) {
   let name = req.params.name;
 
-  Suppliers.find({ name: name }, (err, details) => {
+  Suppliers.find({ name: name },(err, details) => {
     if (err) {
       return res.status(400).json({ success: false, err });
     }
@@ -151,6 +151,43 @@ const getSupplierDetailsByName = function (req, res) {
     });
   });
 };
+
+
+//by id
+
+const getSupplierByID = function (req, res) {
+  let sId = req.params.id;
+
+  Suppliers.findById(sId, (err, supplier) => {
+    if (err) {
+      return res.status(404).json({
+        success: false,
+        err,
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      supplier,
+    });
+  });
+};
+
+
+// //get Supplier Details by ID
+// const getSupplierDetailsByID = function (req, res) {
+//   let sid = req.params.sid;
+
+//   Suppliers.find({ name: name }, (err, details) => {
+//     if (err) {
+//       return res.status(400).json({ success: false, err });
+//     }
+//     return res.status(200).json({
+//       success: true,
+//       exsitingSupplierDetails: details,
+//     });
+//   });
+// };
 
 // Get Supplier Details using Id
 const get_Supplier_id = function (req, res) {
@@ -186,6 +223,7 @@ const update_supplier_details = function (req, res) {
 };
 
 module.exports = {
+
   supplierRegistration,
   supplierLogin,
   getAll_supplier_details,
@@ -193,3 +231,4 @@ module.exports = {
   getSupplierDetailsByName,
   update_supplier_details,
 };
+

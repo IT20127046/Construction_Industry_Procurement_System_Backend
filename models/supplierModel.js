@@ -24,18 +24,20 @@ const supplierSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true,
+
   },
   location: {
     type: String,
-    required: true,
+    
   },
   supplierItems: {
     type: String,
-    required: true,
+    
   },
   type: {
     type: String,
     required: true,
+
   },
   password: {
     type: String,
@@ -45,6 +47,9 @@ const supplierSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  supstatus: {
+    type: String, 
+  }
 });
 
 module.exports = mongoose.model("suppliers", supplierSchema);
