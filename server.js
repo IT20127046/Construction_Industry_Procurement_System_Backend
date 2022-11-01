@@ -16,9 +16,11 @@ app.use(cors());
 const userRoutes = require("./routes/userRoutes");
 app.use(userRoutes);
 
+//Add supllier router
 const supplierRoutes = require("./routes/supplierRoutes");
 app.use(supplierRoutes);
 
+//Add supllier Items router
 const supplierItemsRoutes = require("./routes/SupplierItemsRoute");
 app.use(supplierItemsRoutes);
 
