@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const tender = new mongoose.Schema({
+    site: { type: String, required: true },
     siteManagerID: { type: String, required: true },
     siteManagerName: { type: String, required: true },
     items: {type: Object, required: true},

@@ -1,3 +1,9 @@
+/**
+ * This controller is used hadnle functions(insert, retrive, update, delete) of user details
+ * bcrypt package used for encypt user password
+ * jwt paclkage used for create web token
+ */
+
 const express = require("express");
 const mongoose = require("mongoose");
 const Users = require("../models/userModel");
@@ -6,24 +12,8 @@ const jwt = require("jsonwebtoken");
 const { type } = require("express/lib/response");
 const { v4: uuidv4 } = require("uuid");
 
+// Update user profile
 const updateProfile = async (req, res) => {
-  // Users.findById(req.params.id)
-  //   .then((user) => {
-
-  //     user.website = req.body.website;
-  //     user.csize = req.body.csize;
-  //     user.founded = req.body.founded;
-  //     user.dob = req.body.dob;
-  //     user.sex = req.body.sex;
-  //     user.about = req.body.about;
-
-  //     user
-  //       .save()
-  //       .then(() => res.json("User Updated"))
-  //       .catch((err) => res.status(400).json(`Error: ${err}`));
-  //   })
-  //   .catch((err) => res.status(400).json(`Error: ${err}`));
-
   Users.findByIdAndUpdate(
     req.params.id,
     {
@@ -42,18 +32,15 @@ const updateProfile = async (req, res) => {
   );
 };
 
-// const router = express.Router();
-
 process.env.SECRET_KEY = "secret2022";
 
 //user registration with password encryption - user
 const userRegistration = (req, res) => {
-
   let userData = {
     userID: req.body.userID,
     nicNo: req.body.nicNo,
     password: req.body.password,
-    userName: req.body.userName
+    userName: req.body.userName,
   };
 
   Users.findOne({
@@ -63,11 +50,8 @@ const userRegistration = (req, res) => {
       if (!user) {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           userData.password = hash;
-          // console.log("bcrypt")
           Users.create(userData)
             .then((respond) => {
-              //   console.log(res)
-
               res
                 .status(200)
                 .json({
@@ -76,8 +60,6 @@ const userRegistration = (req, res) => {
                 .end();
             })
             .catch((err) => {
-              // console.log("catch")
-              // res.status(400).send("error" + err).end();
               res.status(400).json({
                 errorMessage: "Something went wrong!",
                 status: false,
@@ -86,9 +68,6 @@ const userRegistration = (req, res) => {
             });
         });
       } else {
-        // res.status(400).json({
-        //     error: "Your ID number is already registered"
-        // }).end()
         return res.status(401).json({
           errorMessage:
             "Your user name is already registered. Use another user name",
@@ -97,7 +76,6 @@ const userRegistration = (req, res) => {
       }
     })
     .catch((err) => {
-      // res.send("error" + err)
       res.status(400).json({
         errorMessage: "Something went wrong!",
         status: false,
@@ -105,7 +83,6 @@ const userRegistration = (req, res) => {
       console.log("error: " + err);
     });
 };
-
 
 //user login with jsonwebtoken - user
 const userLogin = function (req, res) {
@@ -119,27 +96,23 @@ const userLogin = function (req, res) {
             _id: user._id,
             userID: user.userID,
             nicNo: user.nicNo,
-            userName: user.userName
+            userName: user.userName,
           };
           const userToken = jwt.sign(payload, process.env.SECRET_KEY, {
             expiresIn: 1440,
           });
-          
+
           return res.status(200).json({
             success: true,
             userToken: userToken,
           });
-
-          //res.send(userToken);
         } else {
-          // res.json({ error: "Please check your password and try again" })
           return res.status(401).json({
             errorMessage: "User unauthorized!",
             status: false,
           });
         }
       } else {
-        // res.json({ error: "ID number is not registered in the system" })
         return res.status(401).json({
           errorMessage: "Your user name cannot be recognized",
           status: false,
@@ -147,7 +120,6 @@ const userLogin = function (req, res) {
       }
     })
     .catch((err) => {
-      // res.send("error" + err);
       res.status(400).json({
         errorMessage: "Something went wrong!",
         status: false,
@@ -155,8 +127,6 @@ const userLogin = function (req, res) {
       console.log("error: " + err);
     });
 };
-
-
 
 //get a specific user
 const getUser = function (req, res) {
@@ -245,7 +215,6 @@ const removeUser = (req, res) => {
   });
 };
 
-// router.put("/user/updateprofile/:id",
 //update user - user
 const updatepassword = (req, res) => {
   Users.findOne({
@@ -312,4 +281,15 @@ const updatePhoto = async (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 };
 
-module.exports = {userRegistration, userLogin, getUser, getUsers, getUserByType, updateUser, removeUser, updateProfile, updatepassword, updatePhoto};
+module.exports = {
+  userRegistration,
+  userLogin,
+  getUser,
+  getUsers,
+  getUserByType,
+  updateUser,
+  removeUser,
+  updateProfile,
+  updatepassword,
+  updatePhoto,
+};

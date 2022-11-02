@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//Create database schema 
+
 const items = new mongoose.Schema({
   supplierName: {
     type: String,
