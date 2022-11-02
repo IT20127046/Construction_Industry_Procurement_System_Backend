@@ -16,9 +16,11 @@ app.use(cors());
 const userRoutes = require("./routes/userRoutes");
 app.use(userRoutes);
 
+//Add supllier router
 const supplierRoutes = require("./routes/supplierRoutes");
 app.use(supplierRoutes);
 
+//Add supllier Items router
 const supplierItemsRoutes = require("./routes/SupplierItemsRoute");
 app.use(supplierItemsRoutes);
 
@@ -27,6 +29,10 @@ app.use(tenderRoutes);
 
 const itemDetailsRoutes = require("./routes/itemDetailsRouter");
 app.use(itemDetailsRoutes);
+
+const receivedOrderRoutes = require("./routes/receivedOrderRouter");
+app.use(receivedOrderRoutes);
+
 
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;

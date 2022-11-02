@@ -21,6 +21,7 @@ const supplierRegistration = (req, res) => {
     location: req.body.location,
     supplierItems: req.body.supplierItems,
     type: req.body.type,
+    supstatus: 'Decline',
     password: req.body.password,
     dateRegistered: current,
   };
@@ -172,22 +173,6 @@ const getSupplierByID = function (req, res) {
     });
   });
 };
-
-
-// //get Supplier Details by ID
-// const getSupplierDetailsByID = function (req, res) {
-//   let sid = req.params.sid;
-
-//   Suppliers.find({ name: name }, (err, details) => {
-//     if (err) {
-//       return res.status(400).json({ success: false, err });
-//     }
-//     return res.status(200).json({
-//       success: true,
-//       exsitingSupplierDetails: details,
-//     });
-//   });
-// };
 
 // Get Supplier Details using Id
 const get_Supplier_id = function (req, res) {
