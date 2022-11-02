@@ -21,6 +21,7 @@ const supplierRegistration = (req, res) => {
     location: req.body.location,
     supplierItems: req.body.supplierItems,
     type: req.body.type,
+    supstatus: 'Decline',
     password: req.body.password,
     dateRegistered: current,
   };
