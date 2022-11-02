@@ -12,17 +12,23 @@ app.use(bodyparser.json());
 app.use(cors());
 
 // Routes
-const sampleRoutes = require('./routes/sampleRoutes');
-app.use(sampleRoutes);
 
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require("./routes/userRoutes");
 app.use(userRoutes);
 
-const supplierRoutes = require('./routes/supplierRoutes');
+//Add supllier router
+const supplierRoutes = require("./routes/supplierRoutes");
 app.use(supplierRoutes);
 
-const tenderRoutes = require('./routes/tenderRoutes');
+//Add supllier Items router
+const supplierItemsRoutes = require("./routes/SupplierItemsRoute");
+app.use(supplierItemsRoutes);
+
+const tenderRoutes = require("./routes/tenderRoutes");
 app.use(tenderRoutes);
+
+const itemDetailsRoutes = require("./routes/itemDetailsRouter");
+app.use(itemDetailsRoutes);
 
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URI;

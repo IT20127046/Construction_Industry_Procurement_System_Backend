@@ -1,41 +1,41 @@
 const mongoose = require("mongoose");
 
+
+//Create database schema 
 const supplierSchema = new mongoose.Schema({
   uid: {
     type: String,
     required: true,
   },
-  name: { 
+  name: {
     type: String,
-    required: true
-   },
-  email: { 
-    type: String, 
-    required: true 
+    required: true,
   },
-  mobile: { 
-    type: String, 
-    required: true 
+  email: {
+    type: String,
+    required: true,
   },
-  address: { 
-    type: String, 
-    required: true 
+  mobile: {
+    type: String,
+    required: true,
   },
-  image: { 
-    type: String, 
-    required: true 
+  address: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
   },
   location: {
     type: String,
-    required: true,
   },
   supplierItems: {
     type: String,
-    required: true,
   },
-  type: { 
-    type: String, 
-    required: true 
+  type: {
+    type: String,
+    required: true,
   },
   password: {
     type: String,
@@ -44,6 +44,21 @@ const supplierSchema = new mongoose.Schema({
   dateRegistered: {
     type: Date,
     default: Date.now,
+  },
+  supstatus: {
+    type: String,
+  },
+  item1: {
+    type: String,
+  },
+  item2: {
+    type: String,
+  },
+  item3: {
+    type: String,
+  },
+  item4: {
+    type: String,
   },
 });
 
