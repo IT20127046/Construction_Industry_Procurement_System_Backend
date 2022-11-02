@@ -1,3 +1,7 @@
+/**
+ * This model is used for store user details
+ * @userID, @nicNo, @password, @userName -> String data type and required
+ */
 const mongoose = require("mongoose");
 
 const user = new mongoose.Schema({

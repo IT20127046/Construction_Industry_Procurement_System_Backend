@@ -1,8 +1,12 @@
-const TenderModel = require("../models/tenderModel");
+/**
+ * This controller is used handle functions(insert, retrive, update, delete) of received order details
+ */
+
+const ReceivedOrderModel = require("../models/receivedOrderModel");
 
 // Create tender
-const save_tender = function (req, res){
-    let newTender = new TenderModel(req.body);
+const save_order = function (req, res){
+    let newTender = new ReceivedOrderModel(req.body);
 
     newTender.save((err)=>{
         if(err){
@@ -17,8 +21,8 @@ const save_tender = function (req, res){
 }
 
 // Get all tender
-const getall_tenders = function (req, res){
-    TenderModel.find().exec((err, existingTenders) => {
+const getall_orders = function (req, res){
+    ReceivedOrderModel.find().exec((err, existingOrders) => {
         if (err) {
           return res.status(400).json({
             error: err,
@@ -26,57 +30,57 @@ const getall_tenders = function (req, res){
         }
         return res.status(200).json({
           success: true,
-          existingTenders,
+          existingOrders,
         });
       });
 }
 
 // Get tender by ID
-const get_tender = function (req, res){
+const get_order = function (req, res){
     let tenderID = req.params.id;
 
-    TenderModel.findById(tenderID,(err,existingTender)=>{
+    ReceivedOrderModel.findById(tenderID,(err,existingOrder)=>{
         if(err){
             return res.status(400).json({success:false, err});
         }
         return res.status(200).json({
             success:true,
-            existingTender
+            existingOrder
         });
     });
 }
 
 // Update tender
-const update_tender = function (req, res){
-    TenderModel.findByIdAndUpdate(
+const update_order = function (req, res){
+    ReceivedOrderModel.findByIdAndUpdate(
         req.params.id,
         {
             $set:req.body
         },
-        (err, tender)=>{
+        (err, order)=>{
             if(err){
                 return res.status(400).json({error:err});
             }
             return res.status(200).json({
                 success:true,
-                tender
+                order
             });
         }
     );
 }
 
 // Delete tender
-const delete_tender = function (req, res){
-    TenderModel.findByIdAndRemove(req.params.id).exec((err,deletedTender)=>{
+const delete_order = function (req, res){
+    ReceivedOrderModel.findByIdAndRemove(req.params.id).exec((err,deletedOrder)=>{
         if(err) {
             return res.status(400).json({error:err});
         }
         return res.json({
             success:true,
-            deletedTender
+            deletedOrder
         });
 
     });
 }
 
-module.exports = { save_tender, getall_tenders, get_tender, update_tender, delete_tender };
+module.exports = { save_order, getall_orders, get_order, update_order, delete_order };
