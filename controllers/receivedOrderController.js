@@ -1,3 +1,7 @@
+/**
+ * This controller is used handle functions(insert, retrive, update, delete) of received order details
+ */
+
 const ReceivedOrderModel = require("../models/receivedOrderModel");
 
 // Create tender

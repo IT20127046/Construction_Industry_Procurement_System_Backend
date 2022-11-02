@@ -1,3 +1,8 @@
+/**
+ * This router file is used to handle rest api calling comming from user management functions
+ * get, post, put, delete api funcations are called
+ */
+
 const express = require("express");
 const UserRouter = express.Router();
 const UserController = require("../controllers/userController");
