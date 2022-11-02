@@ -1,3 +1,9 @@
+/**
+ * This router file is used to handle rest api calling comming from received order functions
+ * get, post, put, delete api funcations are called
+ */
+
+
 const express = require('express');
 const ReceivedOrderRouter = express.Router();
 const ReceivedOrderController = require('../controllers/receivedOrderController');
