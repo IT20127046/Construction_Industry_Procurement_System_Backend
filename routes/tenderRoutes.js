@@ -12,7 +12,7 @@ TenderRouter.get('/tender/getall', TenderController.getall_tenders);
 TenderRouter.get('/tender/get/:id', TenderController.get_tender);
 
 // Update tender
-TenderRouter.put('/tender/update/:id', TenderController.update_tender);
+TenderRouter.patch('/tender/update/:id', TenderController.update_tender);
 
 // Delete tender
 TenderRouter.delete('/tender/delete/:id', TenderController.delete_tender);
