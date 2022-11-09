@@ -21,7 +21,7 @@ const supplierRegistration = (req, res) => {
     location: req.body.location,
     supplierItems: req.body.supplierItems,
     type: req.body.type,
-    supstatus: 'Decline',
+    supstatus: "Decline",
     password: req.body.password,
     dateRegistered: current,
   };
@@ -33,11 +33,8 @@ const supplierRegistration = (req, res) => {
       if (!user) {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           userData.password = hash;
-          // console.log("bcrypt")
           Suppliers.create(userData)
             .then((respond) => {
-              //   console.log(res)
-
               res
                 .status(200)
                 .json({
@@ -46,8 +43,6 @@ const supplierRegistration = (req, res) => {
                 .end();
             })
             .catch((err) => {
-              // console.log("catch")
-              // res.status(400).send("error" + err).end();
               res.status(400).json({
                 errorMessage: "Something went wrong!",
                 status: false,
@@ -64,7 +59,6 @@ const supplierRegistration = (req, res) => {
       }
     })
     .catch((err) => {
-      // res.send("error" + err)
       res.status(400).json({
         errorMessage: "Something went wrong!",
         status: false,
@@ -99,14 +93,12 @@ const supplierLogin = function (req, res) {
           });
           res.send(userToken);
         } else {
-          // res.json({ error: "Please check your password and try again" })
           return res.status(401).json({
             errorMessage: "User unauthorized!",
             status: false,
           });
         }
       } else {
-        // res.json({ error: "ID number is not registered in the system" })
         return res.status(401).json({
           errorMessage: "Your user name cannot be recognized",
           status: false,
@@ -114,7 +106,6 @@ const supplierLogin = function (req, res) {
       }
     })
     .catch((err) => {
-      // res.send("error" + err);
       res.status(400).json({
         errorMessage: "Something went wrong!",
         status: false,
@@ -142,7 +133,7 @@ const getAll_supplier_details = function (req, res) {
 const getSupplierDetailsByName = function (req, res) {
   let name = req.params.name;
 
-  Suppliers.find({ name: name },(err, details) => {
+  Suppliers.find({ name: name }, (err, details) => {
     if (err) {
       return res.status(400).json({ success: false, err });
     }
@@ -153,9 +144,7 @@ const getSupplierDetailsByName = function (req, res) {
   });
 };
 
-
-//by id
-
+//get supplier by id
 const getSupplierByID = function (req, res) {
   let sId = req.params.id;
 
@@ -208,7 +197,6 @@ const update_supplier_details = function (req, res) {
 };
 
 module.exports = {
-
   supplierRegistration,
   supplierLogin,
   getAll_supplier_details,
@@ -216,4 +204,3 @@ module.exports = {
   getSupplierDetailsByName,
   update_supplier_details,
 };
-
