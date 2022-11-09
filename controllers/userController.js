@@ -103,11 +103,15 @@ const userLogin = function (req, res) {
           });
 
           return res.status(200).json({
-            success: true,
+            status: true,
             userToken: userToken,
+            user_id: payload._id,
+            userID: payload.userID,
+            nicNo: payload.nicNo,
+            userName: payload.userName
           });
         } else {
-          return res.status(401).json({
+          return res.status(200).json({
             errorMessage: "User unauthorized!",
             status: false,
           });
